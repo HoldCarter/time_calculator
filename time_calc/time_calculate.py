@@ -1,15 +1,18 @@
 def add_time(start, duration, weekday=''):
     try:
-        take_start_minutes = to_minutes_converter(pm_am_converter(start))
-        take_duration_minutes = to_minutes_converter(duration)
-        days, hours, minutes, time_format = min_converter(take_start_minutes + take_duration_minutes)
+        start_min = to_minutes_converter(pm_am_converter(start))
+        duration_min = to_minutes_converter(duration)
+        days, hours, minutes, time_format = \
+            min_converter(start_min + duration_min)
         new_time = information(days, hours, minutes, time_format, weekday)
         return new_time
-    except:
+    except Exception:
         return 'Error. Incorrect data. Please start again'
 
+
 def number_day_week(day):
-    '''Принимает день в виде строки и возвращает целое число - по порядку этого дня в неделе
+    '''Принимает день в виде строки и возвращает целое\
+число - по порядку этого дня в неделе
     '''
     match day.lower():
         case 'monday':
@@ -26,7 +29,8 @@ def number_day_week(day):
             return 6
         case 'sunday':
             return 7
-        
+
+
 def weekday_number(num):
     '''Принимает номер дня в неделе, возвращает его название
     '''
@@ -48,7 +52,6 @@ def weekday_number(num):
         case 7:
             return 'Sunday'
 
-        
 
 def min_converter(min: int) -> str:
     ''' Принимает количество минут и возвращает дни, часы и минуты
@@ -62,14 +65,17 @@ def min_converter(min: int) -> str:
 
 
 def to_minutes_converter(time: str) -> int:
-    ''' Принимает строку из часов и минут вида "Hours:Minutes" и возвращает количество минут в виде целого числа
+    ''' Принимает строку из часов и минут вида
+"Hours:Minutes" и возвращает количество минут в виде целого числа
     '''
     h, m = map(int, time.split(":"))
     res = h * 60 + m
     return res
 
+
 def pm_am_converter(s: str) -> str:
-    ''' Функция принимает время в виде строки в формате "Hours:Minutes PM/AM" и возвращает строку в формате 24h
+    ''' Функция принимает время в виде строки в формате
+"Hours:Minutes PM/AM" и возвращает строку в формате 24h
     '''
     time, c = s.split()
     if c == 'AM':
@@ -90,4 +96,5 @@ def information(days, hours, minutes, time_format, weekday):
     else:
         finish = f' ({days} days later)'
 
-    return f'{hours}:{str(minutes).rjust(2, "0")} {time_format}{week if weekday else weekday}{finish}'.strip()
+    return f'{hours}:{str(minutes).rjust(2, "0")} \
+{time_format}{week if weekday else weekday}{finish}'.strip()
