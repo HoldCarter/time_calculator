@@ -1,10 +1,10 @@
 ## Description
-The programm, which help you calculate your time!
-You specify:
-1 - The time on your watch
-2 - The time interval in hours and minutes to add to your time
-3 - Optionally, you can add a day of the week
-As a result, the program will show what time will be on the clock after the specified interval
+The programm, which help you calculate your time!  
+You specify:  
+1 - The time on your watch  
+2 - The time interval in hours and minutes to add to your time  
+3 - Optionally, you can add a day of the week  
+As a result, the program will show what time will be on the clock after the specified interval  
 
 ## Installation
 ```
